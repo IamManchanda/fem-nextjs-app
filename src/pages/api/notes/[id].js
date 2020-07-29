@@ -4,7 +4,7 @@ import notes from "../../../data/data";
 
 const getNote = (id) => notes.find((n) => n.id === parseInt(id));
 
-const handler = nc()
+export default nc()
   .use(cors())
   .get((req, res) => {
     const note = getNote(req.query.id);
@@ -38,5 +38,3 @@ const handler = nc()
     notes.splice(i, 1);
     res.json({ data: req.query.id });
   });
-
-export default handler;

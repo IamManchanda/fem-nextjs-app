@@ -2,7 +2,7 @@ import nc from "next-connect";
 import cors from "cors";
 import notes from "../../../data/data";
 
-const handler = nc()
+export default nc()
   .use(cors())
   .get((req, res) => {
     res.json({
@@ -21,5 +21,3 @@ const handler = nc()
       data: note,
     });
   });
-
-export default handler;

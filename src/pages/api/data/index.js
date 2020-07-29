@@ -1,7 +1,7 @@
 import nc from "next-connect";
 import cors from "cors";
 
-const handler = nc()
+export default nc()
   .use(cors())
   .get((req, res) => {
     res.json({
@@ -18,5 +18,3 @@ const handler = nc()
       message: "Putted.",
     });
   });
-
-export default handler;
