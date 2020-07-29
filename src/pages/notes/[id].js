@@ -17,13 +17,15 @@ const CurrentNotePageById = ({ note: { title } = {} }) => {
 };
 
 export const getServerSideProps = async ({ params, req, res }) => {
-  const response = await fetch(`http://localhost:3000/api/notes/${params.id}`);
+  const response = await fetch(`${process.env.API_URL}/api/notes/${params.id}`);
   if (!response.ok) {
     res.writeHead(302, {
       Location: "/notes",
     });
     res.end();
-    return { props: {} };
+    return {
+      props: {},
+    };
   }
   const { data } = await response.json();
   return {

@@ -26,7 +26,7 @@ const HomePage = ({ content }) => (
   </Fragment>
 );
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   return {
     props: {
       content: {
@@ -34,6 +34,6 @@ export async function getStaticProps() {
       },
     },
   };
-}
+};
 
 export default HomePage;
