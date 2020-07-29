@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import { Fragment } from "react";
 
-const HomePage = () => (
+const HomePage = ({ content }) => (
   <Fragment>
     <div sx={{ height: `calc(100vh - 60px)` }}>
       <div
@@ -19,11 +19,21 @@ const HomePage = () => (
             my: 0,
           }}
         >
-          This is a really dope note taking app.
+          {content.title}
         </h1>
       </div>
     </div>
   </Fragment>
 );
+
+export async function getStaticProps() {
+  return {
+    props: {
+      content: {
+        title: "Look at my note app tho",
+      },
+    },
+  };
+}
 
 export default HomePage;

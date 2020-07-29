@@ -3,11 +3,7 @@ import { jsx } from "theme-ui";
 import { Fragment } from "react";
 import Link from "next/link";
 
-const NotesPage = () => {
-  const notes = new Array(15)
-    .fill(1)
-    .map((e, i) => ({ id: i + 1, title: `Note: ${i + 1}` }));
-
+const NotesPage = ({ notes }) => {
   return (
     <Fragment>
       <div
@@ -54,6 +50,14 @@ const NotesPage = () => {
       </div>
     </Fragment>
   );
+};
+
+export const getServerSideProps = async () => {
+  const res = await fetch(`http://localhost:3000/api/notes`);
+  const { data } = await res.json();
+  return {
+    props: { notes: data },
+  };
 };
 
 export default NotesPage;

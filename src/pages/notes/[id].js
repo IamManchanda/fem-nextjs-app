@@ -1,12 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Fragment } from "react";
-import { useRouter } from "next/router";
 
-const CurrentNotePageById = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
+const CurrentNotePageById = ({ note: { title } = {} }) => {
   return (
     <Fragment>
       <div
@@ -14,10 +10,27 @@ const CurrentNotePageById = () => {
           variant: "containers.page",
         }}
       >
-        <h1>Note Id: {id}</h1>
+        <h1>{title}</h1>
       </div>
     </Fragment>
   );
+};
+
+export const getServerSideProps = async ({ params, req, res }) => {
+  const response = await fetch(`http://localhost:3000/api/notes/${params.id}`);
+  if (!response.ok) {
+    res.writeHead(302, {
+      Location: "/notes",
+    });
+    res.end();
+    return { props: {} };
+  }
+  const { data } = await response.json();
+  return {
+    props: {
+      note: data,
+    },
+  };
 };
 
 export default CurrentNotePageById;
