@@ -1,11 +1,16 @@
-import { Fragment } from "react";
+import { ThemeProvider } from "theme-ui";
+import NavHeader from "../components/nav-header";
 
-import "../styles/globals.scss";
+import "../styles/scss/globals.scss";
+import theme from "../styles/js/theme";
 
 const MyApp = ({ Component, pageProps }) => (
-  <Fragment>
-    <Component {...pageProps} />
-  </Fragment>
+  <ThemeProvider theme={theme}>
+    <div>
+      <NavHeader />
+      <Component {...pageProps} />
+    </div>
+  </ThemeProvider>
 );
 
 export default MyApp;

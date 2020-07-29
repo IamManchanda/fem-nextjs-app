@@ -1,12 +1,28 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { Fragment } from "react";
-import Link from "next/link";
 
 const HomePage = () => (
   <Fragment>
-    <h1>Home Page</h1>
-    <Link href="/notes">
-      <a>Notes Page</a>
-    </Link>
+    <div sx={{ height: `calc(100vh - 60px)` }}>
+      <div
+        sx={{
+          variant: "containers.page",
+          display: "flex",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <h1
+          sx={{
+            fontSize: 8,
+            my: 0,
+          }}
+        >
+          This is a really dope note taking app.
+        </h1>
+      </div>
+    </div>
   </Fragment>
 );
 

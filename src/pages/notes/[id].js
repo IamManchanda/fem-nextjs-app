@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { Fragment } from "react";
 import { useRouter } from "next/router";
 
@@ -7,7 +9,13 @@ const CurrentNotePageById = () => {
 
   return (
     <Fragment>
-      <h1>Current note page by id: {id}</h1>
+      <div
+        sx={{
+          variant: "containers.page",
+        }}
+      >
+        <h1>Note Id: {id}</h1>
+      </div>
     </Fragment>
   );
 };
